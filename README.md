@@ -6,7 +6,7 @@
 
 ターゲットにモデルのボーンを設定することで、モーションに変化を付けることが出来ます。
 
-UnityのGameObjectに Add Copmonet して使用します。
+Unity の GameObject に Add Copmonet して使用します。
 
 ## 用語
 
