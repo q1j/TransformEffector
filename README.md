@@ -16,13 +16,7 @@ UnityのGameObjectに Add Copmonet して使用します。
 
 ## 適用例
 
-position を変更してから rotation の変更
-
-![positionとrotation](https://github.com/q1j/TransformEffector/blob/images/position_and_roation.gif)
-
-position と scale を同時に変更
-
-![positionとscale](https://github.com/q1j/TransformEffector/blob/images/scale_and_position.gif)
+![移動、拡大、回転](https://github.com/q1j/TransformEffector/blob/images/3effecf.gif)
 
 ## コンポーネント's
 
@@ -113,8 +107,6 @@ Size に ターゲットの数を決めて、TRにターゲットのTransformを
 
 設定が出来たら、実行(play)して、ハンドルを動かす（拡大縮小／回転／移動）ことで、ターゲットを操作することが出来ます。
 
-![移動、拡大、回転](https://github.com/q1j/TransformEffector/blob/images/3effecf.gif)
-
 ## 補足
 
 ### 使わない機能のコンポーネントはAdd不要
@@ -128,7 +120,6 @@ Size に ターゲットの数を決めて、TRにターゲットのTransformを
 ゲーム中に有効／無効の切り替えを行いたい場合、ターゲットの Weight を操作して下さい。
 
 0 にすることで無効、それ以外で有効になります。
-
 
 ## 動作環境
 Unity 2017.3.0f3 (64bit) にて動作確認をしています。
