@@ -17,12 +17,13 @@ namespace TransformEffector
 
 		public void UpdatePropertys()
 		{
-			rotDiff_ = inverseOrgRot_ * TR.rotation;
+			if (IsDesable()) return;
+			rotDiff_ = TR.rotation * inverseOrgRot_;
 		}
 
 		public void Operate(EffectTarget target)
 		{
-			if (0f == target.RotationWeight) return;
+			if (IsDesable() || 0f == target.RotationWeight) return;
 
 			Quaternion targetRot = rotDiff_ * target.OrgRot;
 			target.TR.rotation = Quaternion.SlerpUnclamped(target.TR.rotation, targetRot, target.RotationWeight);
@@ -31,6 +32,11 @@ namespace TransformEffector
 		public void InitTarget(EffectTarget target)
 		{
 			target.OrgRot = target.TR.rotation;
+		}
+
+		public bool IsDesable()
+		{
+			return !enabled;
 		}
 	}
 }

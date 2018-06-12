@@ -14,8 +14,13 @@
 
 		public void UpdateToRecoil()
 		{
-			if (0f == Weight || 0f == Friction) return;
+			if (IsDesable()) return;
 			TR.localPosition = tool_.Recoil(TR.localPosition, Weight, Friction);
+		}
+
+		public bool IsDesable()
+		{
+			return (!enabled || 0f == Weight || 0f == Friction);
 		}
 	}
 }

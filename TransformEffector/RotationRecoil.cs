@@ -3,18 +3,24 @@ namespace TransformEffector
 {
 	public class RotationRecoil : TransformCache, IHandleRecoil
 	{
-		public float weight = 0.03f;
+		public float Weight = 0.03f;
 		private Quaternion originalRot_;
 
 		void Start()
 		{
+			if (IsDesable()) return;
 			originalRot_ = TR.localRotation;
 		}
 
 		public void UpdateToRecoil()
 		{
-			if (0f == weight) return;
-			TR.localRotation = Quaternion.SlerpUnclamped(TR.localRotation, originalRot_, weight);
+			if (IsDesable()) return;
+			TR.localRotation = Quaternion.SlerpUnclamped(TR.localRotation, originalRot_, Weight);
+		}
+
+		public bool IsDesable()
+		{
+			return (!enabled || 0 == Weight);
 		}
 	}
 }

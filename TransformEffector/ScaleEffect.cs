@@ -8,10 +8,6 @@ namespace TransformEffector
 		private Vector3 orgHandleRatio_;
 		private Vector3 effectScaleRatio_;
 
-		void Start()
-		{
-		}
-
 		public void Prepare()
 		{
 			orgHandleRatio_ = V3Ratio(TR.localScale);
@@ -20,6 +16,7 @@ namespace TransformEffector
 
 		public void UpdatePropertys()
 		{
+			if (IsDesable()) return;
 			effectScaleRatio_ = Vector3.Scale(orgHandleRatio_, TR.localScale);
 		}
 
@@ -44,7 +41,7 @@ namespace TransformEffector
 
 		public void Operate(EffectTarget target)
 		{
-			if (0f == target.ScaleWeight) return;
+			if (IsDesable() || 0f == target.ScaleWeight) return;
 
 			Vector3 s = GetEffectedScale(target);
 			s = Vector3.Scale(s,target.CorrectScaleRatio);
@@ -52,6 +49,11 @@ namespace TransformEffector
 
 			if (KeepLength) s *= target.KeepScaleLength / (s.x + s.y + s.z);
 			target.TR.localScale = s;
+		}
+
+		public bool IsDesable()
+		{
+			return !enabled;
 		}
 
 		private Vector3 V3Ratio(Vector3 v)

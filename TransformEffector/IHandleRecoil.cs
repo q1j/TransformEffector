@@ -1,7 +1,8 @@
 ﻿namespace TransformEffector
 {
-	interface IHandleRecoil
+	public interface IHandleRecoil
 	{
 		void UpdateToRecoil();
+		bool IsDesable();
 	}
 }
