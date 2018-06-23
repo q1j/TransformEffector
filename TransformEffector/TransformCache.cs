@@ -9,4 +9,9 @@ public class TransformCache : MonoBehaviour
 	{
 		TR = transform;
 	}
+
+	public void SetTragetTransform(Transform t)
+	{
+		TR = t;
+	}
 }
