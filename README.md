@@ -76,6 +76,44 @@ Friction(揺り戻し)は ScaleRecoil と PositionRecoil のみ設定可能で�
 
 weight と Friction、どちらかまたは両方が　0　の場合、無効になります。
 
+### Looking At
+
+RotationRffectを利用して、キャラクターを指定のターゲットに向けることが出来ます。
+
+####  プロパティ
+
+| パラメータ名 | 設定する内容 | 設定範囲値 |
+|:-:|:-:|:-:|
+| Target | 向ける対象オブジェクト(Transform) | オブジェクトを向けるTransform |
+| Move Speed | Rotationの変化量への係数 | 0～1 |
+| Weight Max | 向きへの重み（最大） | 0～1 |
+| Weight Min  | 向きへの重み（最小） | 0～1 |
+| X Angle Limit | X軸の方向の最大回転角 | 0～180  |
+| Y Angle Limit | Y軸の方向の最大回転角 | 0～180  |
+| Z Angle Limit | Z軸の方向の最大回転角 | 0～180  |
+| Is Rot Delay | Targetが移動時に回転量をリセット | true of false |
+
+##### 速度
+Move Speed は 対象オブジェクトへに向くための変化量に対する係数です。
+Tragetの移動速度が速い場合（オブジェクトを向ける変化量が）は大きい場合、回転速度は早くなります。
+
+##### 重み
+Weight Max は Targetへの向きの回転量を、最大どの程度Add Componentしたオブジェクトに伝えるかの重み、
+Weight Min は 向きが変わった際の、重みの初期値です。
+
+##### 角度制限
+X Angle Limit はX軸の回転の最大値となり、オイラー角で180度までをしています。
+360度方向への回転も、同じだけの角度で制限されます。
+0 が指定された場合は、角度制限されません。
+
+Y Angle Limit はY軸の回転をと Z Angle Limit もZ軸の回転を同様に制限します。
+
+##### 遅延
+Is Rot Delay はTargetが移動した場合（Add Componentしたオブジェクトの向きが変わる際）に、
+ターゲットに向く移動速度を Weight Min でリセットすることためのフラグです。
+Trueに設定することで、向きを変える際に僅かな遅延を発生させることが出来ます。
+
+
 ## 設定例
 
 モーション中の馬のモデルに干渉してみます。
